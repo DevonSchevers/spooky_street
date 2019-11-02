@@ -21,7 +21,6 @@ def guessing_game():
     while game_start.lower() == "y" and guesses > 1:
         print("OK")
         pick_bird
-        print(pick_bird)
         guess_a = input("Please enter your guess: ")
         if guess_a != pick_bird:
             guesses -= 1
