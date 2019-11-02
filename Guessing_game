@@ -1,0 +1,58 @@
+import random
+birds = ["crow","robin","hawk","pelican","pigeon","parakeet","chicken","lovebird","mockingbird","bluebird","blackbird"]
+pick_bird = random.choice(birds)
+def guessing_game():
+    guesses = 4
+    print("You will be guessing from a list of 11 birds selected at random. You have 3 guesses, and then the game starts over with a new bird. ")
+    print("")
+    print("Birds: ")
+    print("crow")
+    print("robin")
+    print("hawk")
+    print("pelican")
+    print("pigeon")
+    print("parakeet")
+    print("chicken")
+    print("lovebird")
+    print("mockingbird")
+    print("bluebird")
+    print("blackbird")
+    game_start = input("Are you ready? y/n ")
+    while game_start.lower() == "y" and guesses > 1:
+        print("OK")
+        pick_bird
+        print(pick_bird)
+        guess_a = input("Please enter your guess: ")
+        if guess_a != pick_bird:
+            guesses -= 1
+            guess_b = input("Try again: ")
+            if  guess_b!= pick_bird:
+                guesses -= 1
+                guess_c = input("Try again: ")
+                if guess_c != pick_bird:
+                    guesses -= 1
+                elif guess_c == pick_bird:
+                    guesses -= 4
+                    print("Correct! And with only one guess left, Wow!")
+            elif guess_b == pick_bird:
+                guesses -= 4
+                print("Correct! Good Job!")
+        elif guess_a == pick_bird:
+            guesses -= 4
+            print("Wow! Correct on the first try, Good Job!")
+        elif guess_a.alpha() == False:
+            print("Please only enter the name of the bird youre guessing. ")
+    if game_start.lower() == "n":
+        print("Okay, see you around! ")
+    elif guesses < 1:
+        print("")
+    elif guesses == 1:
+        print("")
+        print("Sorry but you are out of guesses! Please try again. ")
+        print("")
+    else:
+        print("")
+        print("Please enter 'y' or 'n' ")
+        guessing_game()
+
+guessing_game()
