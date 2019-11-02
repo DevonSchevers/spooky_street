@@ -1,0 +1,52 @@
+def game_start():
+    start = input("Are you ready to play? y/n ")
+    if start.lower().startswith("y") == False and start.lower().startswith("n") == False:
+        print("Invalid Input")
+        game_start()
+    if start.lower().startswith("y") == True:
+        guessing_game()
+    elif start.lower().startswith("n") == True:
+        print("Okay, Bye!")
+def play_again():
+    play_again = input("Would you like to try again? y/n \n")
+    if play_again.lower().startswith("y"): 
+        guessing_game()
+    elif play_again.lower().startswith("n"):
+        print("Okay, Bye!")
+    else:
+        print("Invalid Input")
+        return
+import random
+birds = ["crow","robin","hawk","pelican","pigeon","parakeet","chicken","lovebird","mockingbird","bluebird","blackbird"]
+pick_bird = random.choice(birds)
+def guessing_game():
+    guesses = 3
+    print("You will be answering from a list of 11 birds selected at random. You have 3 guesses, and then the game starts over with a new bird. \n")
+    for bird in birds:
+        print(bird)
+    while  guesses >= 1:
+        pick_bird
+        print("Guesses remaining:",guesses)
+        answer = input("Please enter your guess: ")
+        if answer != pick_bird:
+            guesses -= 1
+            print("Guesses remaining:",guesses)
+            answer = input("Try again: ")
+            if  answer != pick_bird:
+                guesses -= 1
+                answer = input("Final guess: ")
+                if answer != pick_bird:
+                    guesses -= 1
+                elif answer == pick_bird:
+                    print("Correct! And with only one answer left, Wow!")
+                    play_again()
+            elif answer == pick_bird:
+                print("Correct! Good Job!")
+                play_again()
+        elif answer == pick_bird:
+            print("Wow! Correct on the first try, Good Job!")
+            play_again()
+    if guesses == 0:
+        print("Sorry but you are out of guesses! \n")
+        play_again()
+game_start()
