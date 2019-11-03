@@ -8,14 +8,14 @@ def game_start():
     elif start.lower().startswith("n") == True:
         print("Okay, Bye!")
 def play_again():
-    play_again = input("Would you like to try again? y/n \n")
-    if play_again.lower().startswith("y"): 
+    again = input("Would you like to try again? y/n \n")
+    if again.lower().startswith("y"): 
         guessing_game()
-    elif play_again.lower().startswith("n"):
+    elif again.lower().startswith("n"):
         print("Okay, Bye!")
     else:
         print("Invalid Input")
-        return
+        play_again()
 import random
 birds = ["crow","robin","hawk","pelican","pigeon","parakeet","chicken","lovebird","mockingbird","bluebird","blackbird"]
 pick_bird = random.choice(birds)
